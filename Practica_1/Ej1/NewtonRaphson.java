@@ -1,33 +1,43 @@
 import java.util.Scanner;
 
-/**
- * NewtonRaphson
- */
-
 public class NewtonRaphson {
-
-    public void newtonRaphson(double aproximacionInicial,int iteraciones, Function f1, Function f2)
-    {
+    static public double newtonRaphson(double x0, int iteraciones, Function f, Function df) {
+        double xN = x0;
+        double xN1 = 0;
         for (int i = 0; i < iteraciones; i++) {
-            System.out.println(aproximacionInicial - (f1.value(aproximacionInicial) / f2.value(aproximacionInicial)));
+            if (f.value(xN) != 0) {
+                xN1 = xN - f.value(xN) / df.value(xN);
+                System.out.println("Iteacion: " + i + " Aproximacion " + xN1);
+            }
+            xN = xN1;
+
         }
+        return xN;
     }
+
+    public interface Function {
+        double value(double x);
+    }
+
     public static void main(String[] args) {
-    double aproximacion = 0.0;
-    int iteraciones = 0;
-    Scanner scanner = new Scanner(System.in);
-    System.out.println("Introduce la aproximacion inicial:");
-    aproximacion = scanner.nextDouble();
-    System.out.println("Introduce el numero de iteraciones:");
-    iteraciones = scanner.nextInt();
+        Function f = (double x) -> {return Math.cos(x) - Math.pow(x, 3);};
+        Function df = (double x) -> {return -Math.sin(x) - 3 * Math.pow(x, 2);};
 
-    Function f = (double x) -> {return Math.cos(x) - x*x*x;}; 
-    Function f2 = (double x) -> {return Math.cos(x) - (3)/2;}; // f'
-    Function f3 = (double x) -> {return 
+        Function g = (double x) -> x * x - 5;
+        Function dg = (double x) -> 2 * x;
+
+        Scanner s = new Scanner(System.in);
+        System.out.println("Introduce un número en el intervalo [0,1]: ");
+        double x0 = s.nextDouble();
+        System.out.println("Introduce el numero de iteraciones: ");
+        int n = s.nextInt();
+        newtonRaphson(x0, n, f, df);
+
+        System.out.println("Introduce un número en el intervalo [2,3]: ");
+        x0 = s.nextDouble();
+        System.out.println("Introduce el numero de iteraciones: ");
+        n = s.nextInt();
+        newtonRaphson(x0, n, g, dg);
 
     }
-}
-
-interface Function {
-    double value(double x);
 }
