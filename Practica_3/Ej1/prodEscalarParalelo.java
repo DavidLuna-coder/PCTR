@@ -23,7 +23,7 @@ public class prodEscalarParalelo extends Thread {
     public static void main(String[] args) throws InterruptedException {
         int tamVector = (int)1e8;
         int nHilos = Integer.parseInt(args[0]);
-
+        System.out.println("Rellenando Vectores...");
         vector1 = new double[tamVector];
         vector2 = new double[tamVector];
         vecResult = new double[nHilos];
@@ -58,8 +58,8 @@ public class prodEscalarParalelo extends Thread {
             resultado += vecResult[i];
         }
         long finCron = System.nanoTime();
-        System.out.println("Tiempo tardado: " + (finCron-inicCron)+ " nanosegundos");
-        System.out.println("Resultado: " + resultado);
+        System.out.println("Tiempo tardado: " + (finCron-inicCron)/(long)1e3+ " microsegundos");
+        // System.out.println("Resultado: " + resultado);
 
     }
 }

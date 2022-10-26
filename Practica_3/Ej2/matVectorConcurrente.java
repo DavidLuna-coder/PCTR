@@ -14,7 +14,7 @@ public class matVectorConcurrente implements Runnable {
     public static void main(String[] args) throws InterruptedException {
         System.out.println("Rellenando Matriz y Vector...");
         int tamaño = 30000;
-        int nHilos = 6;
+        int nHilos = Integer.parseInt(args[0]);
         A = new int[tamaño][tamaño];
         b = new int[tamaño];
         resultado = new int[tamaño];
