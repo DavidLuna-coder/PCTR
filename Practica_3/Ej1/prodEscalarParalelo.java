@@ -1,18 +1,31 @@
 package Ej1;
 
 import java.util.Random;
-
+/**
+ * @author David Luna Jurado
+ * @version v1.0.0
+ * @see {@code Thread}
+ */
 public class prodEscalarParalelo extends Thread {
     public static double[] vector1, vector2, vecResult;
 
     private int id, ini, fin;
 
+    /**
+     * Constructor Paralelizado
+     * @param idHebra Identificador de la Hebra
+     * @param inicio  Índice del inicio de la parte del vector sobre la que trabajará el hilo
+     * @param fin     Índice final de la parte del vector sobre la que trabajará el hilo (No incluido)
+     */
     public prodEscalarParalelo(int idHebra, int inicio, int fin) {
         id = idHebra;
         ini = inicio;
         this.fin = fin;
     }
 
+    /**
+     * Sobreescritura del método run. Almacena el resultado en un vector de resultados parciales, en la posición correspondiente al {@code id} del hilo
+     */
     public void run() {
         vecResult[id] = 0;
         for (int i = ini; i < fin; i++) {
@@ -20,6 +33,11 @@ public class prodEscalarParalelo extends Thread {
         }
     }
 
+    /**
+     * Método main que divide el vector, pone las hebras en marcha y suma todos los elementos del vector de resultados parciales
+     * @param args {@code args[0]} indica el número de hilos que utilizaremos
+     * @throws InterruptedException
+     */
     public static void main(String[] args) throws InterruptedException {
         int tamVector = (int)1e8;
         int nHilos = Integer.parseInt(args[0]);

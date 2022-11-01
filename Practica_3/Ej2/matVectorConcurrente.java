@@ -1,16 +1,33 @@
 package Ej2;
+
 import java.util.Random;
+
+/**
+ * @author David Luna Jurado
+ * @version v1.0.0
+ */
 public class matVectorConcurrente implements Runnable {
     static public int[][] A;
     static public int[] b;
     static public int[] resultado;
     private int ini, fin;
 
+    /**
+     * Constructor de la clase parametrizado
+     * @param ini Primera fila que procesa la matriz.
+     * @param fin Fila siguiente a la última que procesa la matriz
+     */
     matVectorConcurrente(int ini, int fin) {
         this.ini = ini;
         this.fin = fin;
     }
 
+    /**
+     * Método main que lanza hilos de ejecución para calcular el producto de una Matriz de tamaño 30000 x 30000
+     * por un vector de tamaño 30000
+     * @param args {@code args[0]} es el numero de hilos que usaremos para el cálculo
+     * @throws InterruptedException
+     */
     public static void main(String[] args) throws InterruptedException {
         System.out.println("Rellenando Matriz y Vector...");
         int tamaño = 30000;
@@ -51,9 +68,13 @@ public class matVectorConcurrente implements Runnable {
         System.out.println("Resultado: ");
         // matVector.imprimirVector(resultado);
 
-        System.out.println("Tiempo: " + (TiempoFinal - TiempoInicial)/(long)1e6);
+        System.out.println("Tiempo: " + (TiempoFinal - TiempoInicial) / (long) 1e6);
     }
 
+    /**
+     * Implementación del método run, calcula el producto de n filas de una matriz, desde ini hasta fin(no incluida)
+     * y lo almacena en la posición del vector de resultados correspondiente.
+     */
     public void run() {
         for (int i = ini; i < fin; i++) {
             for (int j = 0; j < A.length; j++) {

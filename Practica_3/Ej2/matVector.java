@@ -1,8 +1,15 @@
 package Ej2;
 
 import java.util.Random;
-
+/**
+ * @author David Luna Jurado
+ * @version v1.0.0
+ */
 public class matVector {
+    /**
+     * Método main que calcula el producto de una matriz de tamaño 30000 x 30000 de forma secuencial
+     * @param args
+     */
     public static void main(String[] args) {
         System.out.println("Rellenando Matriz y vector, no cuenta para el tiempo total... ");
 
@@ -38,6 +45,10 @@ public class matVector {
 
     }
 
+    /**
+     * Método que imprime una matriz de enteros dada por pantalla (Usado en pruebas).
+     * @param mat matriz de enteros a imprimir.
+     */
     static public void imprimirMatriz(int[][] mat) {
         for (int i = 0; i < mat.length; i++) {
             System.out.printf("[ ");
@@ -49,6 +60,10 @@ public class matVector {
         }
     }
 
+    /**
+     * Método que imprime un vector de enteros dado por pantalla
+     * @param vector Vector de enteros a imprimir.
+     */
     static public void imprimirVector(int[] vector) {
 
         for (int i = 0; i < vector.length; i++) {

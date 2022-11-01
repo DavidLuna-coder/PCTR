@@ -2,7 +2,14 @@ package Ej1;
 
 import java.util.Random;
 
+/**
+ * @author David Luna Jurado
+ * @version v1.0.0
+ */
 public class prodEscalar {
+    /**
+     * Método main que calcula el producto escalar de dos vectores de forma secuencial.
+     */
     public static void main(String[] args) {
         System.out.println("Rellenando Vector...");
         int tamVector = (int) 1.0e8;
