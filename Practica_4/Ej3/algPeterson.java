@@ -1,4 +1,8 @@
 package Ej3;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * @author David Luna Jurado
  * @version v1.0.0
@@ -17,10 +21,11 @@ public class algPeterson implements Runnable {
 
     public void run() {
         if (id == 1) {
-            while(true) {
+            while (true) {
                 wantp = true;
                 last = 1;
-                while(wantq && last != 2);
+                while (wantq && last != 2)
+                    ;
                 // SC
                 System.out.println(Thread.currentThread().getName());
                 n++;
@@ -31,12 +36,13 @@ public class algPeterson implements Runnable {
         }
 
         if (id == 2) {
-            while(true) {
-               
+            while (true) {
+
                 wantq = true;
                 last = 2;
-                while (wantp && last != 1);
-                //SC
+                while (wantp && last != 1)
+                    ;
+                // SC
                 System.out.println(Thread.currentThread().getName());
                 n--;
                 System.out.println(n);
@@ -46,18 +52,14 @@ public class algPeterson implements Runnable {
         }
     }
 
-
     public static void main(String[] args) {
-        Thread p = new Thread(new algPeterson(1));
-        Thread q = new Thread(new algPeterson(2));
+        ExecutorService pool = Executors.newFixedThreadPool(2);
+        pool.execute(new algPeterson(1));
+        pool.execute(new algPeterson(2));
+        pool.shutdown();
 
-        p.start();
-        q.start();
+        while (!pool.isTerminated())
+            ;
 
-        try {
-            p.join();
-            q.join();
-        } catch (InterruptedException e) {
-        }
     }
 }
