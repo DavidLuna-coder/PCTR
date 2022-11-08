@@ -15,10 +15,21 @@ public class algPeterson implements Runnable {
     static public int n = 0;
     private int id;
 
+    /**
+     * Constructor parametrizado
+     * 
+     * @param id identificador de la hebra
+     */
     algPeterson(int id) {
         this.id = id;
     }
 
+    /**
+     * Sobreescritura del método run segun el id de la hebra, si {@code id==1}
+     * {@code n} se incrementa.
+     * si {@code id==2} {@code n} se decrementa utilizando el algoritmo de Peterson
+     * para proteger la sección crítica.
+     */
     public void run() {
         if (id == 1) {
             while (true) {
@@ -52,6 +63,10 @@ public class algPeterson implements Runnable {
         }
     }
 
+    /**
+     * Método main que crea dos hebras y las deja lista para su ejecución.
+     * 
+     */
     public static void main(String[] args) {
         ExecutorService pool = Executors.newFixedThreadPool(2);
         pool.execute(new algPeterson(1));
