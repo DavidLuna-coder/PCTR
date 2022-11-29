@@ -1,0 +1,4 @@
+set title "Ej2
+set xlabel "Num Hilos"
+set ylabel "%CPU"
+plot "Ej2.dat" with line linetype 1 title ""

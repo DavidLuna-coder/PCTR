@@ -10,14 +10,13 @@ public class intDefinidaMonteCarlo {
         for (int i = 0; i < n; i++) {
             x = Math.random();
             y = Math.random();
-
+            
             if (y <= f.value(x)) {
                 contador_exitos++;
             }
-
-            return contador_exitos / n;
         }
 
+        return contador_exitos / n;
     }
 
     public static void main(String[] args) {

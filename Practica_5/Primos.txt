@@ -1,0 +1,2 @@
+#Secuencial	Paralelo
+8		1
