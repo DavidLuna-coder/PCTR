@@ -5,7 +5,17 @@ import mpi.*;
  * COMPILACION:javac -cp .:$MPJ_HOME/lib/mpj.jar escalMultiple.java
  * Ejecución: mpjrun.sh escalMultiple
  */
+
+/**
+ * @author David Luna Jurado
+ * @version v1.0.0
+ */
 public class escalMultiple {
+    /**
+     * Función que ejecuta varios procesos, si el proceso es el primero envía al resto de procesos
+     * un array de enteros. El resto de procesos multiplicará ese array por su rango y lo muestra por pantalla.
+     * @param args Numero de procesos a ejecutar
+     */
     public static void main(String[] args) {
         MPI.Init(args);
         int rank = MPI.COMM_WORLD.Rank();

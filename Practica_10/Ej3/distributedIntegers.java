@@ -2,10 +2,18 @@
 import mpi.*;
 
 /**
+ * @author David Luna Jurado
+ * @version v1.0.0
  * distributedIntegers
  */
 public class distributedIntegers {
 
+    /**
+     * Función main que ejecuta varios procesos, si el proceso es el emisor, divide 10⁷ entre el numero de procesos.
+     * Posteriormente manda un array a todos los procesos con los rangos a trabajar. Cada proceso trabajará en contar los números primos que existen dentro de su rango dado.
+     * Finalmente con la operación reduce se devuelve la suma de esos valores al proceso emisor.
+     * @param args
+     */
     public static void main(String[] args) {
         MPI.Init(args);
         int rank = MPI.COMM_WORLD.Rank();

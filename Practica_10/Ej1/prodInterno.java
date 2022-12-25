@@ -6,10 +6,16 @@ import mpi.*;
  * EJECUCION: mpjrun.sh -np 2 prodInterno
  */
 /**
+ * @author David Luna Jurado
  * prodInterno
  */
 public class prodInterno {
-
+    /**
+     * Función main que inicia procesos, el primero de ellos envía dos vectores al segundo proceso, el segundo proceso los recive y realiza
+     * su producto escalar. Luego devuelve el resultado al primer proceso
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception{
         MPI.Init(args);
         int rank = MPI.COMM_WORLD.Rank();
